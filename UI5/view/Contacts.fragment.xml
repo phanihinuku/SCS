@@ -1,0 +1,67 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	>
+
+<Table id="contactsTable"
+		
+		inset="false"
+		noDataText="No Contacts"
+	items="{
+			path: 'CM>/'
+			}"
+		
+		>
+		<headerToolbar>
+			<Toolbar>
+				<Title text="Contacts" level="H2"/>
+			
+			</Toolbar>
+		</headerToolbar>
+		
+		<columns>
+			<Column>
+				<Text text="Name" />
+			</Column>
+			<Column>
+				<Text text="Age" />
+			</Column>
+			<Column>
+				<Text text="Address" />
+			</Column>
+			
+			<Column>
+				<Text text="City" />
+			</Column>
+			<Column>
+				<Text text="Mobile" />
+				
+			</Column>
+			<Column>
+				<Text text="Home" />
+				
+			</Column>
+				
+		</columns>
+		
+		<items>
+			<ColumnListItem   vAlign="Middle" type="None">
+				<cells>
+				
+			<Text text="{CM>name}" />
+			<Text text="{CM>age}" />
+			<Text text="{CM>address}" />
+			<Text text="{CM>city}" />
+			<Text text="{CM>phone_mobile}" />
+			<Text text="{CM>phone_home}" />
+				</cells>
+			
+			</ColumnListItem>
+		</items>
+		
+		
+	</Table>
+
+</core:FragmentDefinition>

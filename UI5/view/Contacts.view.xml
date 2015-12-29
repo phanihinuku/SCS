@@ -1,0 +1,28 @@
+<core:View controllerName="com.scs.view.Contacts" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page navButtonPress="goBack" showNavButton="true" title="Segmentation">
+		<subHeader>
+			<Bar>
+				<contentLeft>
+					<Title level="H2" text="Grouping"/>
+				</contentLeft>
+				<contentRight>
+					<Button id="loadGroupsMenu" level="H2" press="loadGroups" text="Load group" type="Emphasized"/>
+				</contentRight>
+			</Bar>
+		</subHeader>
+		<content>
+			<Panel class="sapUiResponsiveMargin" expandable="true" expanded="true" headerText="Segmentation of Contacts" width="auto">
+				<content>
+					<core:Fragment fragmentName="com.scs.view.ContactFilter" type="XML"></core:Fragment>
+				</content>
+			</Panel>
+			
+			<Panel class="sapUiResponsiveMargin" expandable="true" expanded="true" headerText="View Contacts" width="auto">
+				<content>
+			<core:Fragment fragmentName="com.scs.view.Contacts" type="XML"></core:Fragment>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</core:View>

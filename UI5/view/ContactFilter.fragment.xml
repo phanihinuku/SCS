@@ -1,0 +1,83 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:mvc="sap.ui.core.mvc"
+	>
+
+	
+<Table id="segmentationFilter"
+	
+		inset="false"
+		noDataText="No Segmentation. Please Add One"
+	items="{
+			path: 'SF>/'
+			}"
+		
+		>
+	
+		
+		
+		<columns>
+			<Column>
+				<Text text="Segment" />
+			</Column>
+			<Column>
+				<Text text="Operator" />
+			</Column>
+			
+			<Column>
+				<Text text="Low Value" />
+			</Column>
+			<Column>
+				<Text text="High Value" />
+		
+			</Column>
+			<Column>
+			<Button icon="sap-icon://add" press="addFilter"/>
+			</Column>
+				
+		</columns>
+		
+		<items>
+			<ColumnListItem  id ="filterItem" vAlign="Middle" type="None">
+				<cells>
+				<Select
+					selectedKey="{path:'SF>segment'}"
+					items="{
+						path: 'CP>/contactfields',
+							templateShareable : true
+					}" 	
+				>
+					<core:Item key="{CP>column_name}" 	text="{CP>column_name}" enabled="{CP>filterable}" />
+				</Select>
+					<Select 	selectedKey="{path:'SF>operator'}"
+					change ="onChangeOps"
+						templateShareable = "true"
+					items="{
+						path: 'OPS>/ops',
+							templateShareable : true
+						
+					}">
+					<core:Item key="{OPS>key}" text="{OPS>text}" />
+				</Select>
+				<Input value="{SF>value}"/>
+				<Input value="{SF>highvalue}" enabled="false"/>
+				<Button icon="sap-icon://delete" press="deleteRow"/>
+			
+				</cells>
+			
+			</ColumnListItem>
+		</items>
+		
+		
+	</Table>
+
+	<Bar>
+	<contentRight>
+				<Button id="bGetContacts" text="Get Contacts" level="H2" type="Emphasized" press="getContacts"/>
+					<Button text="Save as Group" level="H2" type="Emphasized" press="saveGroup"/>
+			</contentRight>
+			</Bar>
+
+</core:FragmentDefinition>

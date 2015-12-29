@@ -1,0 +1,217 @@
+<core:View controllerName="com.scs.view.GroupsMaster" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page navButtonPress="goBack" showNavButton="true" title="Send Message">
+		<content>
+			<Wizard complete="reviewAndSend" id="createSMS">
+				<!--step1-->
+				<WizardStep complete="loadSelectedContacts" id="selectGroup" title="Select Group" validated="true">
+					<List id="groupList" items="{GM>/}" mode="MultiSelect" noDataText="No Contact Groups">
+						<StandardListItem title="{GM>group_name}"/>
+					</List>
+				</WizardStep>
+				<!--step2-->
+				<WizardStep complete="finalizeContacts" id="finalizaContactStep" title="Finalize Contacts" validated="true">
+					<Panel class="sapUiResponsiveMargin" expandable="true" expanded="false" headerText="View Contacts" width="auto">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Text text="Selected Contacts."/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://refresh" press="finalizeContacts" text="Refresh"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table id="contactsTableSel" inset="false" items="{ path: 'SCM>/' }" mode="MultiSelect" noDataText="No Contacts">
+								<headerToolbar>
+									<Toolbar>
+										<Title level="H2" text="Contacts"/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column>
+										<Text text="Age"/>
+									</Column>
+									<Column>
+										<Text text="Address"/>
+									</Column>
+									<Column>
+										<Text text="City"/>
+									</Column>
+									<Column>
+										<Text text="Mo bile"/>
+									</Column>
+									<Column>
+										<Text text="Home"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="None" vAlign="Middle">
+										<cells>
+											<Text text="{SCM>name}"/>
+											<Text text="{SCM>age}"/>
+											<Text text="{SCM>address}"/>
+											<Text text="{SCM>city}"/>
+											<Text text="{SCM>phone_mobile}"/>
+											<Text text="{SCM>phone_home}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+					<Panel class="sapUiResponsiveMargin" expandable="true" expanded="true" headerText="View Contacts" width="auto">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Text text="Add Additional Contacts."/>
+								<ToolbarSpacer/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table id="addContactsTableSel" inset="false" items="{ path: 'ADL>/' }" mode="MultiSelect" noDataText="Click Add to add contact"
+								selectAll="true">
+								<headerToolbar>
+									<Toolbar >
+										<Title level="H2" text="Add Contacts Manually "/>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<Text text="Name"/>
+									</Column>
+									<Column>
+										<Text text="Phone"/>
+									</Column>
+									<Column>
+										<Button icon="sap-icon://add-contact" press="addManualContact" text="Add" type="Emphasized"/>
+									</Column>
+								</columns>
+								<items>
+									<ColumnListItem type="None" vAlign="Middle">
+										<cells>
+											<Input liveChange="validate" placeholder="Enter Name" value="{ADL>name}"/>
+											<Input liveChange="validate" placeholder="Enter Phone" value="{ADL>phone_mobile}"/>
+											<Button icon="sap-icon://delete" press="removADLeContact"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</content>
+					</Panel>
+				</WizardStep>
+				<!--step3-->
+				<WizardStep id="selectTemplate" title="Select Template">
+					<Select change="onChange" items="{ path: 'TM>/' }" id="selectTemplateCompose">
+						<core:Item key="{TM>templateid}" text="{TM>template_name}"/>
+					</Select>
+					<TextArea id="tAreaTemplateText" liveChange="validate" plcaeholder="Please add Message" rows="10" value="" width="100%"/>
+				</WizardStep>
+				<!--step4-->
+				<WizardStep title="Select Frequeny">
+					<SegmentedButton id="freqSeg" select="selectFrequency" selectedButton="bImmediate">
+						<Button customData="{value:'I'}" id="bImmediate" text="Immediate"/>
+						<Button customData="{value:'O'}" id="bOnceLater" text="On Other Day"/>
+						<Button customData="{value:'D'}" id="bDaily" text="Daily"/>
+						<Button customData="{value:'W'}" id="bWeekly" text="Weekly"/>
+						<Button customData="{value:'M'}" id="bMonthly" text="Monthly"/>
+						<!--<Button id="bYearly" text="Yearly" visible = "false"/>-->
+					</SegmentedButton>
+					<Panel class="sapUiResponsiveMargin" id="laterPanel" visible="false" width="auto">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text=""/>
+								<ToolbarSpacer/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<f:SimpleForm class="editableForm" columnsL="2" columnsM="2" editable="true" emptySpanL="1" emptySpanM="1" id="dateTime">
+								<f:content>
+									<Label text="Start Date/Time"/>
+									<DatePicker change="validate" id="startDate" placeholder="Select Date"/>
+									<TimePicker change="validate" id="startTime" placeholder="Select Time"/>
+									<Label text="TimeZone" visible="false"/>
+									<Select id="zones" items="{ path: 'ZONES>/' }" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish"
+										visible="false">
+										<core:Item key="{ZONES>abbr}" text="{ZONES>text}"/>
+									</Select>
+								</f:content>
+							</f:SimpleForm>
+							<!--Daily-->
+							<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="1" emptySpanM="1" id="dailyBlock">
+								<f:content>
+									<Label text="Recurring count"/>
+									<Input id="recurDaily" liveChange="recurDefault" type="Number" value="1" width="10%"></Input>
+								</f:content>
+							</f:SimpleForm>
+							<!--weekly-->
+							<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="1" emptySpanM="1" id="weeklyBlock">
+								<f:content>
+									<Label text="Recurring no. of Weeks "/>
+									<Input id="recurWeekly" liveChange="recurDefault" type="Number" value="1" width="30%"></Input>
+									<Label text="On"/>
+									<MultiComboBox id="weekdaysW" items="{ path: 'DAYSWEEK>/' }" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish">
+										<core:Item key="{DAYSWEEK>key}" text="{DAYSWEEK>weekday}"/>
+									</MultiComboBox>
+								</f:content>
+							</f:SimpleForm>
+							<!--Monthly-->
+							<f:SimpleForm class="editableForm" columnsL="1" columnsM="1" editable="true" emptySpanL="1" emptySpanM="1" id="monthlyBlock">
+								<f:content>
+									<Label text=""/>
+									<Label text="Months"/>
+									<MultiComboBox id="monthsCombo" items="{ path: 'MONTHS>/' }" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish">
+										<core:Item key="{MONTHS>key}" text="{MONTHS>month}"/>
+									</MultiComboBox>
+									<Label text=""/>
+									<SegmentedButton class="sapUiSmallMarginBottom" id="daysOrOn" select="daysOrOn" selectedButton="idDays" width="200%">
+										<Button id="idDays" text="Days"/>
+										<Button id="idOn" text="On"/>
+									</SegmentedButton>
+									<Label text="Dates"/>
+									<!--<CheckBox/>-->
+									<MultiComboBox id="monthlyBlock2" items="{ path: 'DAYS>/' }" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish">
+										<core:Item key="{DAYS>key}" text="{DAYS>day}" visible="true"/>
+									</MultiComboBox>
+									<Label text="On"/>
+									<!--<CheckBox/>-->
+									<MultiComboBox id="monthlyBlock3" selectionChange="handleSelectionChange" selectionFinish="handleSelectionFinish" visible="false">
+										<core:Item key="41" text="First"/>
+										<core:Item key="42" text="Second"/>
+										<core:Item key="43" text="Third"/>
+										<core:Item key="44" text="Fourth"/>
+										<core:Item key="45" text="Last"/>
+									</MultiComboBox>
+									<MultiComboBox id="monthlyBlock4" items="{ path: 'DAYSWEEK>/' }" selectionChange="handleSelectionChange"
+										selectionFinish="handleSelectionFinish" visible="false">
+										<core:Item key="{DAYSWEEK>key}" text="{DAYSWEEK>weekday}"/>
+									</MultiComboBox>
+								</f:content>
+							</f:SimpleForm>
+						</content>
+					</Panel>
+					<Panel class="sapUiResponsiveMargin" width="auto">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Selected Contacts"/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://refresh" press="finalizeContacts" text="refresh"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Tokenizer id="selectedContactTokens" tokens="{ path: 'UCS>/' }" width="100%">
+								<Token key="{UCS>phone_mobile}" text="{UCS>name}"/>
+							</Tokenizer>
+						</content>
+					</Panel>
+				</WizardStep>
+			</Wizard>
+		</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button press="handleComposeCancel" text="Cancel"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</core:View>

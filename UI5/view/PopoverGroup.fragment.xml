@@ -1,0 +1,24 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		title="Create Group"
+		class="sapUiContentPadding"
+		placement="Bottom"
+			>
+			<content>
+				<Input id="groupname" placeholder="Enter Group Name" />
+			</content>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button
+					text="Create group"
+					press="createGroupPopup" />
+					
+				
+			</Toolbar>
+		</footer>
+	
+	</Popover>
+</core:FragmentDefinition>

@@ -1,0 +1,116 @@
+<core:View controllerName="com.scs.view.Adduser" xmlns:co="sap.ui.commons" xmlns:core="sap.ui.core" xmlns:f="sap.ui.commons.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.commons.layout" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page title="" >
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<!--Image src="images/fm.png"></Image-->
+						<Button icon="sap-icon://nav-back" text="" press="back" />
+				</contentLeft>
+				<contentRight>
+					<!--Image src="http://www.sap.com/global/images/SAPLogo.gif"></Image-->
+					<Button icon="sap-icon://eraser" text="clear" press="clear" />
+				</contentRight>
+				<contentMiddle>
+					<Label class="barLabel" text="Add User"></Label>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+			<f:SimpleForm editable="true" id="loginform1" layout="ResponsiveLayout" maxContainerCols="3" margin="30%" >
+				<f:title>
+					<core:Title></core:Title>
+				</f:title>
+				<f:content>
+					<!-- <Label text="" />
+                                  <Image src="images/Logo_login.png" width="50%" ></Image> -->
+					<Label text="User Name"/>
+					<Input id="adduid" placeholder="Username" type="Text" width="50%" liveChange="validate"/>
+					
+					<Label text="Display Name"/>
+					<Input id="addDisplayName" placeholder="Display Name"  width="50%" liveChange="validate"/>
+					
+					
+					<Label id="pl" text="Password"/>
+					<Input id="addpwd" placeholder="Password" type="Password" width="50%" liveChange="validate"/>
+					<Label text="Re-enter Password"/>
+					<!--<HBox>-->
+					<Input id="addpwd2" placeholder="Re enter Password" type="Password" width="50%" liveChange="validate2"  />
+					<!--<core:Icon id="statusPwd" src="sap-icon://status-error"/>-->
+					<!--</HBox>-->
+					<Label text="Role"/>
+				<RadioButtonGroup columns="3" width="500px"  id="RBGRole"
+				selectedIndex="1"
+				class="sapUiMediumMarginBottom">
+				<buttons>
+					<RadioButton id="RBA" text="Admin"/>
+					<RadioButton id="RBU" text="User" />
+				</buttons>
+			</RadioButtonGroup>
+						
+					<Label text=""/>
+					<Button id="login2" press="addUser" text="Add User" type="Emphasized" width="50%"/>
+					<!-- <Label text="" />
+                                  <Button id="login3" width="50%" text="Forgot Password" type="Emphasized"
+                                         press="onMsgDialogPress" /> -->
+				</f:content>
+				<f:title>
+					<core:Title></core:Title>
+				</f:title>
+			</f:SimpleForm>
+			<!-- <f:SimpleForm width="50%" id="loginform1" maxContainerCols="3"
+                                  editable="true" layout="ResponsiveLayout">
+                            
+                                  <f:title>
+                                         <core:Title></core:Title>
+                                         </f:title>
+                                         <f:content>
+                                         
+                                         <l:MatrixLayout>
+                                                                                  <l:rows>
+                                                                                   <l:MatrixLayoutRow>
+                                                                                  <l:cells>
+                                                                                  <l:MatrixLayoutCell>
+                                                                                         <RadioButton   id="partic" selected="true" text=" Participant" select="changeForm"/>
+                                                                                         
+                                                                                  </l:MatrixLayoutCell>
+                                  </l:cells>
+                                  </l:MatrixLayoutRow>
+                                  <l:MatrixLayoutRow>
+                                                                                  <l:MatrixLayoutCell>
+                                                                                         <RadioButton   id="present" text=" Presenter" select="changeForm"/>
+                                                                                  </l:MatrixLayoutCell>
+                                                                                  </l:MatrixLayoutRow>
+                                  </l:rows>
+                                  </l:MatrixLayout>
+                                         <co:TextView class="fonts" width="250px" design="H1"  text=" Login_Page"/>
+                                                <Label text="UserId"/>
+                                             <Input type="Text" placeholder="Enter UserId" id="uid" width="40%" />
+                                             
+                                                <Label id="pl" visible="false" text="Password"/>
+                                                <Input  id="pwd"  type="Password" visible="false" placeholder="Enter Password"  width="40%" />
+                                                <Label text="Name" />
+                                                
+                                                <Input type="Text" id="idName" placeholder="Enter Name" width="40%" />
+                                                <Label text="Email" />
+                                                
+                                                <Input type="Text" id="email" placeholder="Enter Email" width="40%" />
+                                                <Label text=""/>
+                                                <VBox width="46%" justifyContent="Center">
+                                                <Button id="login2" width="40%" text="Login" type="Emphasized" press="login" />
+                                                </VBox>
+                                                </f:content>
+                                                <f:title>
+                                         <core:Title></core:Title>
+                                         </f:title>
+                                  </f:SimpleForm> -->
+		</content>
+		<footer>
+			<Bar>
+				<contentLeft>
+					<!--Label text="© SAP"></Label-->
+				</contentLeft>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

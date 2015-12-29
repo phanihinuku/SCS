@@ -1,0 +1,20 @@
+{
+  "run": [
+    {
+      "filePath": "/SCSAdmin/index.html",
+      "previewMode": 0,
+      "dataMode": 1,
+      "workspace": "withoutWorkspace",
+      "ui5ActiveVersion": null,
+      "ui5VerSource": null,
+      "isDefaultVersion": 0,
+      "urlParameters": [],
+      "hashParameter": "",
+      "_metadata": {
+        "runnerId": "webapprunner",
+        "id": 1958715,
+        "displayName": "New Web Application 1"
+      }
+    }
+  ]
+}

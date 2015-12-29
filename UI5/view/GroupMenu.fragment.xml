@@ -1,0 +1,23 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		title="Load Group"
+		class="sapUiContentPadding"
+		noDataText="No Groups loaded"
+		placement="Left"
+			>
+			<content>
+<List
+					items="{GM>/}" >
+					<StandardListItem
+						title="{GM>group_name}"
+						type="Active"
+						
+						press="loadSelectedGroup"
+					 />
+				</List>
+	</content>
+
+	</Popover>
+</core:FragmentDefinition>

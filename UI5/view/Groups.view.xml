@@ -1,0 +1,6 @@
+<core:View controllerName="com.scs.view.Groups" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page title="Group">
+		<content></content>
+	</Page>
+</core:View>

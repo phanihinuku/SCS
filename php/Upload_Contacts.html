@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Upload Client Contacts</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2></h2>
+  <p>Upload Client Contacts</p>
+  <form class="form-inline" role="form" action="upload.php" method="POST" enctype="multipart/form-data" >
+    <div class="form-group">
+      <label for="contacts">Upload Excel here:</label>
+      <input type="file" class="form-control" id="contacts" name="contacts" placeholder="Upload excel here...">
+    </div>
+    <button type="submit" class="btn btn-primary">Upload File</button>
+  </form>
+</div>
+
+</body>
+</html>

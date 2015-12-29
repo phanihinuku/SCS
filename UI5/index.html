@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+<!---->
+<script src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js"
+				id="sap-ui-bootstrap"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-xx-bindingSyntax="complex"
+				data-sap-ui-resourceroots='{"com.scs": "./"}'
+				data-sap-ui-theme="sap_bluecrystal">
+		</script>
+		<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+		<link rel="stylesheet" type="text/css" href="css/css1.css"></link>
+		<script>
+				sap.ui.localResources("view");
+				var app = new sap.m.App({initialPage:"idLogin"});
+				var splitApp = new sap.m.SplitApp({homeIcon:"nav-back",initialDetail:"idEmpty"});
+				
+				
+				
+				var pg = sap.ui.view({id:"idDashboard", viewName:"com.scs.view.Dashboard", type:sap.ui.core.mvc.ViewType.JS});
+					app.addPage(pg);
+				 pg = sap.ui.view({id:"idLogin", viewName:"com.scs.view.Login", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);		
+				 pg = sap.ui.view({id:"idUpload", viewName:"com.scs.view.Upload", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);
+				pg = sap.ui.view({id:"idContacts", viewName:"com.scs.view.Contacts", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);
+				pg = sap.ui.view({id:"idInbox", viewName:"com.scs.view.Inbox", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);
+				pg = sap.ui.view({id:"idAdduser", viewName:"com.scs.view.Adduser", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);
+					// splitApp.addDetailPage(pg);
+				pg = sap.ui.view({id:"idUploadSchedule", viewName:"com.scs.view.UploadSchedule", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);
+			
+					pg = sap.ui.view({id:"idGroupsMaster", viewName:"com.scs.view.GroupsMaster", type:sap.ui.core.mvc.ViewType.XML});
+					app.addPage(pg);
+				pg = sap.ui.view({id:"idGroups", viewName:"com.scs.view.Groups", type:sap.ui.core.mvc.ViewType.XML});
+					splitApp.addDetailPage(pg);
+				pg = sap.ui.view({id:"idTemplatesMaster", viewName:"com.scs.view.TemplatesMaster", type:sap.ui.core.mvc.ViewType.XML});
+					splitApp.addMasterPage(pg);
+				pg = sap.ui.view({id:"idTemplates", viewName:"com.scs.view.Templates", type:sap.ui.core.mvc.ViewType.XML});
+					splitApp.addDetailPage(pg);
+				pg = sap.ui.view({id:"idEmpty", viewName:"com.scs.view.Empty", type:sap.ui.core.mvc.ViewType.XML});
+					splitApp.addDetailPage(pg);
+				pg = sap.ui.view({id:"idTemplateCreate", viewName:"com.scs.view.TemplateCreate", type:sap.ui.core.mvc.ViewType.XML});
+					splitApp.addDetailPage(pg);
+			
+			
+				
+				var shell = new sap.m.Shell({app:app,showLogout:true,title:"SCS"});
+				
+					shell.placeAt("content");
+		// 		var oRouter = new sap.ui.core.routing.Router();
+		// oRouter.addRoute({
+		// 	pattern: "",
+		// 	name: "_index",
+		
+		// });
+		// oRouter.addRoute({
+		// 	pattern: "testapp1",
+		// 	name: "_testapp1",
+		// 	callback: function() {
+		// 		shell.setApp(sap.ui.view({
+		// 			type: sap.ui.core.mvc.ViewType.XML,
+		// 			viewName:"sap.ui.core.samples.routing.mobile.App"
+		// 		}));
+		// 	},
+		// 	subroutes: [
+		// 		{
+		// 			pattern: "{selectedIndex}",
+		// 			name: "_testapp_detail",
+		// 		}
+		// 	]
+		// });
+		// oRouter.register("app");
+		// oRouter.initialize();
+		
+		
+				
+		</script>
+	</head>                                                                                                                                                                                                                                                   
+	<body class="sapUiBody" role="application">
+		<div id="content"></div>
+	</body>
+</html>

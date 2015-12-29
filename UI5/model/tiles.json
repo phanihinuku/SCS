@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Upload Excel",
+        "icon": "excel-attachment",
+        "iconColor": "#ffffff",
+        "bgColor": "rgb(57, 123, 110)",
+        "borderColor": "rgb(57, 123, 110)"
+    },
+    {
+        "title": "Tile 2",
+        "icon": "search"
+    }
+
+]

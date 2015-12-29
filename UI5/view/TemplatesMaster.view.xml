@@ -1,0 +1,27 @@
+<core:View controllerName="com.scs.view.TemplatesMaster" xmlns:core="sap.ui.core" xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+	<Page title="Templates" showNavButton="true" navButtonPress="goBack">
+		<content>
+			
+			<List id="templateList"
+			delete="handleDeleteTemplate"
+					items="{TM>/}" >
+					<StandardListItem
+						title="{TM>template_name}"
+						type="Active"
+						press="loadSelectedTemplates"
+					 />
+				</List>
+			
+		</content>
+		<footer>
+			
+			<Bar>
+				<contentMiddle>
+					<Button icon="sap-icon://add" press="createTemplate"></Button>
+					<Button icon="sap-icon://less" press="deleteTemplateMode"></Button>
+				</contentMiddle>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

@@ -1,0 +1,38 @@
+<mvc:View class="viewPadding" controllerName="com.scs.view.Upload" xmlns:core="sap.ui.core" xmlns:f="sap.ui.commons.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:u="sap.ui.unified" xmlns="sap.m">
+	<Page navButtonPress="onBackPress" showNavButton="true" title="Upload Contacts">
+	<content>
+		<f:SimpleForm editable="true" id="loginform1" layout="ResponsiveLayout" margin="30%" maxContainerCols="3">
+			<f:title></f:title>
+			<f:content>
+				<l:VerticalLayout >
+				<Link href="http://scs.pabbisys.com/SCSAdmin/templates/contact_template.xls" icon="sap-icon://excel-attachment" id="downloadLink"
+						target="_blank" text="Download Contact Upload Attachment" visible="true"/>
+					
+					<u:FileUploader id="fileUploader" name="contacts" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"
+						uploadUrl="http://scs.pabbisys.com/SCSAdmin/php/upload.php" width="400px"/>
+					<Button press="handleUploadPress" text="Upload File"/>
+					<!--enctype="multipart/form-data"-->
+					<!--<Button icon="sap-icon://excel-attachment" text="Download Sample Template"/>-->
+					<StandardTile icon="sap-icon://excel-attachment" info="For Contact Upload" infoState="Success" press="downloadLink"
+						title="Download Sample Template" visible="false"/>
+				</l:VerticalLayout>
+			</f:content>
+			<f:title>
+				<core:Title></core:Title>
+			</f:title>
+		</f:SimpleForm>
+		</content>
+	</Page>
+	<!--<Page  title="Upload Contacts" showNavButton="true" navButtonPress="onBackPress">-->
+	<!--	<content>-->
+	<!--		<html:div >-->
+	<!--			<html:form action="http://localhost:8087/SCSAdmin/php/upload.php" class="form-inline" enctype="multipart/form-data" method="POST" role="form">-->
+	<!--					<html:label for="contacts">Upload Excel here:</html:label>-->
+	<!--					<html:input class="form-control" id="contacts" name="contacts" placeholder="Upload excel here..." type="file"></html:input>-->
+	<!--						<html:button class="btn btn-primary" type="submit">Upload File</html:button>-->
+	<!--					</html:form>-->
+	<!--				</html:div>-->
+	<!--			</content>-->
+	<!--		</Page>-->
+</mvc:View>

@@ -1,0 +1,62 @@
+<mvc:View controllerName="com.scs.view.Inbox" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:core="sap.ui.core" >
+	<Page navButtonPress="back" showNavButton="true" title="Inbox">
+		<subHeader>
+			<Bar>
+				<contentRight>
+					<Button icon="sap-icon://add" press="gotoCompose" text="Compose"></Button>
+				</contentRight>
+			</Bar>
+		</subHeader>
+		<content>
+			<IconTabBar class="sapUiResponsiveContentPadding" id="idIconTabBar" select="handleIconTabBarSelect">
+				<items>
+					<IconTabFilter icon="sap-icon://outbox" key="NEW" text="Scheduled"/>
+					<IconTabFilter icon="sap-icon://begin" iconColor="Positive" key="CMP" text="Completed"/>
+					<IconTabFilter icon="sap-icon://sys-cancel" iconColor="Negative" key="CNC" text="Cancelled"/>
+					<IconTabFilter icon="sap-icon://status-error" iconColor="Critical" key="FLD" text="Failed"/>
+				</items>
+				<content>
+					<Table id="inboxTable" inset="false" items="{ path: 'IM>/scheduled' }">
+						<headerToolbar>
+							<Toolbar>
+								<Title level="H2" text=""/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="12em">
+								<Text text="Recepients"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Message"/>
+							</Column>
+							<Column width="12em">
+								<Text text="Date"/>
+							</Column>
+							<!--<Column width="12em">-->
+							<!--	<Text text="Status"/>-->
+							<!--</Column>-->
+						</columns>
+						<items>
+							<ColumnListItem id="cli">
+								<cells>
+									<ObjectIdentifier text="{IM>recipient_phone}" title="{IM>recipient_name}"/>
+									<Text text="{IM>message}"/>
+									<Text text="{IM>date}"/>
+									<!--<Text-->
+									<!--	text="{IM>status}" />-->
+									<!--<core:Icon src="{path:'IM>status',formatter:'com.scs.utils.formatter.icongen'}">-->
+									<!--	<core:layoutData>-->
+									<!--		<FlexItemData growFactor="1"/>-->
+									<!--	</core:layoutData>-->
+									<!--</core:Icon>-->
+									
+									
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>

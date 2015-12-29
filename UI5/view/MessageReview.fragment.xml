@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Dialog class="sapUiPopupWithPadding" id="dialogConfirm" placement="Bottom" title="Send/Schedule Message">
+		<beginButton>
+			<Button press="sendMsg" text="Send"/>
+		</beginButton>
+		<endButton>
+			<Button press="cancelMsg" text="Cancel"/>
+		</endButton>
+		<content>
+			<Text class="sapMH4FontSize" text="To"/>
+			<FlexBox alignItems="Start" direction="Column">
+				<items>
+					<Tokenizer tokens="{ path: 'UCS>/' }" width="100%" enabled="false">
+						<Token key="{UCS>phone_mobile}" text="{UCS>phone_mobile}"/>
+					</Tokenizer>
+					<Text class="sapMH4FontSize" text="Message: "/>
+					<Text id="messageTextReview"/>
+					<Text text=" "/>
+					<Text class="sapMH4FontSize" text="When: "/>
+					<Text id="messageSchedule" text="When"/>
+				</items>
+			</FlexBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>
